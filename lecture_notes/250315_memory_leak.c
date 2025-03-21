@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "Memory Leak.h"
+
+int main() {
+
+    checkLeak();
+
+    int n = 10;
+    char* ary1 = malloc(n * sizeof(char)); //char ary1[1];
+    for (int i = 0; i < n; i++){
+        ary1[i] = 'a' + i;
+    }
+    ary1[n - 1] = '\0';
+    printf("%s", ary1);
+    printf("\n\n\n\n");
+    free(ary1);
+
+    int m = 20;
+    int* ary2 = calloc(m, sizeof(int));
+    for (int i = 0; i < m; i++){
+        printf("%3d", ary2[i]);
+    }
+    print("\n\n");
+
+    int Q = 30;
+    ary2 = realloc(ary2, Q * sizeof(int));
+    for (int i = 0; i < Q; i++){
+        printf("%3d", ary2[i]);
+    }
+    print("\n\n\n\n");
+    free(ary2);
+
+}
